@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belyakov design — графический дизайн</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="#hero" class="logo">Belyakov design</a>
+    <nav class="nav">
+      <a href="#about">Обо мне</a>
+      <a href="#portfolio">Работы</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <!-- 1. Титульный лист -->
+  <section id="hero" class="hero">
+    <div class="hero__image" aria-hidden="true">
+      <div class="hero__abstract"></div>
+    </div>
+    <div class="hero__content">
+      <div class="hero__badge">
+        <span class="hero__badge-text">Belyakov design</span>
+      </div>
+      <p class="hero__tagline">Графический дизайн и полиграфия</p>
+    </div>
+    <a href="#about" class="hero__scroll" aria-label="Прокрутить вниз">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- 2. Обо мне -->
+  <section id="about" class="about">
+    <div class="section-inner">
+      <h2 class="section-title">Обо мне</h2>
+      <div class="about__grid">
+        <div class="about__intro">
+          <p class="about__lead">
+            Привет, меня зовут Денис Беляков — графический дизайнер с фокусом на визуальную идентичность и полиграфию.
+          </p>
+          <p>
+            Более пяти лет я создаю дизайн, который помогает брендам говорить с аудиторией через форму, цвет и типографику. 
+            Работаю с логотипами, фирменным стилем, упаковкой, каталогами и рекламными материалами.
+          </p>
+          <p>
+            В каждом проекте стремлюсь к балансу между эстетикой и функциональностью: 
+            дизайн должен не только нравиться, но и решать задачу бизнеса.
+          </p>
+        </div>
+        <div class="about__experience">
+          <h3 class="about__subtitle">Опыт</h3>
+          <ul class="experience-list">
+            <li class="experience-item">
+              <span class="experience-item__year">2022 — н.в.</span>
+              <div>
+                <strong>Фриланс · графический дизайнер</strong>
+                <p>Разработка фирменного стиля, полиграфии и digital-материалов для малого и среднего бизнеса.</p>
+              </div>
+            </li>
+            <li class="experience-item">
+              <span class="experience-item__year">2020 — 2022</span>
+              <div>
+                <strong>Студия «Полиграфика+» · дизайнер</strong>
+                <p>Вёрстка каталогов, буклетов и упаковки. Подготовка макетов к печати, контроль цветопередачи.</p>
+              </div>
+            </li>
+            <li class="experience-item">
+              <span class="experience-item__year">2018 — 2020</span>
+              <div>
+                <strong>Junior-дизайнер</strong>
+                <p>Создание визиток, листовок и соцсетевых шаблонов. Освоение Adobe InDesign, Illustrator и Figma.</p>
+              </div>
+            </li>
+          </ul>
+          <div class="about__skills">
+            <span>InDesign</span>
+            <span>Illustrator</span>
+            <span>Photoshop</span>
+            <span>Figma</span>
+            <span>Типографика</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Портфолио — полиграфия -->
+  <section id="portfolio" class="portfolio">
+    <div class="section-inner">
+      <h2 class="section-title">Полиграфия</h2>
+      <p class="section-desc">Примеры работ: упаковка, каталоги, фирменная продукция</p>
+      <div class="portfolio__grid">
+
+        <article class="portfolio-card">
+          <div class="portfolio-card__visual portfolio-card__visual--1">
+            <div class="print-mock print-mock--poster">
+              <span class="print-mock__title">Абстракция</span>
+              <span class="print-mock__sub">Постер · A2</span>
+            </div>
+          </div>
+          <div class="portfolio-card__caption">
+            <h3 class="portfolio-card__title">Серия постеров «Форма и свет»</h3>
+            <p class="portfolio-card__desc">Минималистичная графика для выставки современного искусства.</p>
+          </div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-card__visual portfolio-card__visual--2">
+            <div class="print-mock print-mock--cards">
+              <div class="print-mock__card"></div>
+              <div class="print-mock__card print-mock__card--back"></div>
+            </div>
+          </div>
+          <div class="portfolio-card__caption">
+            <h3 class="portfolio-card__title">Визитки для кофейни</h3>
+            <p class="portfolio-card__desc">Фирменный стиль с акцентом на тактильность и премиальную бумагу.</p>
+          </div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-card__visual portfolio-card__visual--3">
+            <div class="print-mock print-mock--brochure">
+              <div class="print-mock__page"></div>
+              <div class="print-mock__page print-mock__page--fold"></div>
+            </div>
+          </div>
+          <div class="portfolio-card__caption">
+            <h3 class="portfolio-card__title">Каталог коллекции одежды</h3>
+            <p class="portfolio-card__desc">48-страничный lookbook с чистой сеткой и выразительной типографикой.</p>
+          </div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-card__visual portfolio-card__visual--4">
+            <div class="print-mock print-mock--packaging">
+              <div class="print-mock__box"></div>
+            </div>
+          </div>
+          <div class="portfolio-card__caption">
+            <h3 class="portfolio-card__title">Упаковка для косметики</h3>
+            <p class="portfolio-card__desc">Пастельная палитра и геометрический паттерн для линейки skincare.</p>
+          </div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-card__visual portfolio-card__visual--5">
+            <div class="print-mock print-mock--flyer">
+              <span class="print-mock__circle"></span>
+              <span class="print-mock__line"></span>
+            </div>
+          </div>
+          <div class="portfolio-card__caption">
+            <h3 class="portfolio-card__title">Листовка для фестиваля</h3>
+            <p class="portfolio-card__desc">Яркий, но сдержанный дизайн с акцентом на дату и локацию.</p>
+          </div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-card__visual portfolio-card__visual--6">
+            <div class="print-mock print-mock--booklet">
+              <div class="print-mock__spread"></div>
+            </div>
+          </div>
+          <div class="portfolio-card__caption">
+            <h3 class="portfolio-card__title">Буклет архитектурного бюро</h3>
+            <p class="portfolio-card__desc">Трёхсгибный буклет с проектами и описанием услуг студии.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Контакты -->
+  <section id="contact" class="contact">
+    <div class="section-inner">
+      <h2 class="section-title">Связаться</h2>
+      <p class="section-desc">Оставьте контакты — отвечу в течение одного рабочего дня</p>
+      <form class="contact-form" action="#" method="post">
+        <div class="contact-form__row">
+          <label class="contact-form__label" for="name">Имя</label>
+          <input
+            class="contact-form__input"
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Как к вам обращаться"
+            required
+          >
+        </div>
+        <div class="contact-form__row">
+          <label class="contact-form__label" for="phone">Номер телефона</label>
+          <input
+            class="contact-form__input"
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+7 (___) ___-__-__"
+          >
+        </div>
+        <div class="contact-form__row">
+          <label class="contact-form__label" for="contact">Почта или Telegram</label>
+          <input
+            class="contact-form__input"
+            type="text"
+            id="contact"
+            name="contact"
+            placeholder="email@example.com или @username"
+            required
+          >
+        </div>
+        <button class="contact-form__submit" type="submit">Отправить</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Belyakov design</p>
+  </footer>
+
+</body>
+</html>
