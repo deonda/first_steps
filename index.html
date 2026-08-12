@@ -37,6 +37,13 @@
       <div class="hero__actions">
         <a class="hero__portfolio-link" href="#portfolio">Посмотреть работы</a>
         <a class="hero__order-link" href="#contact">Заказать дизайн</a>
+        <div class="theme-switch" role="group" aria-label="Цветовая тема">
+          <span class="theme-switch__sun" aria-hidden="true"></span>
+          <button class="theme-switch__control" type="button" aria-label="Включить светлую тему" aria-pressed="false">
+            <span class="theme-switch__thumb"></span>
+          </button>
+          <span class="theme-switch__moon" aria-hidden="true"></span>
+        </div>
       </div>
       <p class="hero__tagline">Графический дизайн и полиграфия</p>
     </div>
@@ -261,6 +268,24 @@
     const header = document.querySelector('.header');
     const navToggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav');
+    const themeControl = document.querySelector('.theme-switch__control');
+    const savedTheme = localStorage.getItem('belyakov-theme');
+    const initialTheme = savedTheme === 'light' ? 'light' : 'dark';
+
+    const applyTheme = (theme) => {
+      const isLight = theme === 'light';
+      document.documentElement.dataset.theme = theme;
+      themeControl.setAttribute('aria-pressed', String(isLight));
+      themeControl.setAttribute('aria-label', isLight ? 'Включить тёмную тему' : 'Включить светлую тему');
+    };
+
+    applyTheme(initialTheme);
+
+    themeControl.addEventListener('click', () => {
+      const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+      applyTheme(nextTheme);
+      localStorage.setItem('belyakov-theme', nextTheme);
+    });
 
     navToggle.addEventListener('click', () => {
       const isOpen = header.classList.toggle('header--menu-open');

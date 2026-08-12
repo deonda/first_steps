@@ -27,6 +27,16 @@
   --text-muted: #BDB9B2;
   --white: #ECE8E2;
   --light-gray: #D7D3CC;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --cream: #ECE8E2;
+  --lavender: #D7D3CC;
+  --text: #08111F;
+  --text-muted: #12345C;
+  --white: #ECE8E2;
+  color-scheme: light;
 }
 
 html {
@@ -205,7 +215,7 @@ h1, h2, h3, h4, h5, h6,
     90deg,
     transparent 0%,
     rgba(236, 232, 226, 0.12) 20%,
-    rgba(255, 247, 220, 0.9) 50%,
+    rgba(230, 194, 122, 0.9) 50%,
     rgba(236, 232, 226, 0.12) 80%,
     transparent 100%
   );
@@ -445,6 +455,146 @@ h1, h2, h3, h4, h5, h6,
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 24px;
+}
+
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  gap: 7px;
+  margin-left: 2px;
+  opacity: 0.72;
+  transition: opacity 0.2s ease;
+}
+
+.theme-switch:hover,
+.theme-switch:focus-within {
+  opacity: 1;
+}
+
+.theme-switch__control {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  padding: 0;
+  background: var(--blue);
+  border: 1px solid var(--blue-light);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.theme-switch__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: var(--light-gray);
+  border-radius: 50%;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background 0.28s ease;
+}
+
+[data-theme="light"] .theme-switch__thumb {
+  background: var(--turquoise);
+  transform: translateX(22px);
+}
+
+.theme-switch__sun,
+.theme-switch__moon {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.theme-switch__sun {
+  border: 2px solid var(--turquoise);
+  border-radius: 50%;
+  box-shadow:
+    0 -6px 0 -5px var(--turquoise),
+    0 6px 0 -5px var(--turquoise),
+    6px 0 0 -5px var(--turquoise),
+    -6px 0 0 -5px var(--turquoise);
+}
+
+.theme-switch__moon {
+  overflow: hidden;
+  background: var(--blue-light);
+  border-radius: 50%;
+}
+
+.theme-switch__moon::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: -3px;
+  left: 5px;
+  background: var(--cream);
+  border-radius: 50%;
+}
+
+.theme-switch__control:focus-visible {
+  outline: 2px solid var(--turquoise-light);
+  outline-offset: 3px;
+}
+
+/* Light theme uses only the supplied brand palette. */
+[data-theme="light"] .header {
+  background: rgba(236, 232, 226, 0.9);
+}
+
+[data-theme="light"] .hero__abstract {
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(79, 147, 210, 0.38) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 70% 60%, rgba(216, 168, 91, 0.32) 0%, transparent 55%),
+    radial-gradient(circle at 55% 30%, rgba(184, 69, 63, 0.18) 0%, transparent 40%),
+    linear-gradient(145deg, var(--light-gray) 0%, var(--cream) 52%, var(--blue-light) 100%);
+}
+
+[data-theme="light"] .hero__abstract::before {
+  background: linear-gradient(160deg, rgba(79, 147, 210, 0.34), rgba(215, 211, 204, 0.62), rgba(236, 232, 226, 0.3));
+}
+
+[data-theme="light"] .hero__abstract::after {
+  background: linear-gradient(220deg, rgba(230, 194, 122, 0.52), rgba(184, 69, 63, 0.18));
+}
+
+[data-theme="light"] .portfolio-card,
+[data-theme="light"] .portfolio-card__caption,
+[data-theme="light"] .contact-form__input,
+[data-theme="light"] .portfolio-project,
+[data-theme="light"] .gallery__dialog {
+  background: var(--cream);
+}
+
+[data-theme="light"] .about__skills span,
+[data-theme="light"] .gallery__viewport {
+  background: var(--light-gray);
+}
+
+[data-theme="light"] .portfolio-card {
+  border-color: var(--blue-light);
+  box-shadow: 0 8px 32px rgba(18, 52, 92, 0.18);
+}
+
+[data-theme="light"] .portfolio-card__projects {
+  background: rgba(18, 52, 92, 0.84);
+}
+
+[data-theme="light"] .portfolio-project {
+  color: var(--cream);
+  background: var(--blue);
+}
+
+[data-theme="light"] .gallery__backdrop {
+  background: rgba(8, 17, 31, 0.86);
+}
+
+[data-theme="light"] .gallery__close,
+[data-theme="light"] .gallery__arrow {
+  color: var(--cream);
 }
 
 .hero__portfolio-link,
@@ -1569,10 +1719,21 @@ body.gallery-open {
     gap: 10px;
   }
 
+  .theme-switch {
+    width: 100%;
+    justify-content: center;
+    margin: 2px 0 0;
+  }
+
   .hero__portfolio-link,
   .hero__order-link {
     flex: 1 1 100%;
     width: 100%;
+  }
+
+  [data-theme="light"] .nav {
+    background: rgba(236, 232, 226, 0.98);
+    box-shadow: 0 16px 30px rgba(18, 52, 92, 0.18);
   }
 
   .hero__scroll {
