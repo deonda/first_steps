@@ -185,6 +185,32 @@
             required
           >
         </div>
+        <div class="contact-form__row">
+          <label class="contact-form__label" for="product-type">Тип изделия</label>
+          <select class="contact-form__input contact-form__select" id="product-type" name="productType" required>
+            <option value="" selected disabled>Выберите тип изделия</option>
+            <option value="Постер">Постер</option>
+            <option value="Плакат">Плакат</option>
+            <option value="Визитка">Визитка</option>
+            <option value="Карточка товара">Карточка товара</option>
+            <option value="Презентация">Презентация</option>
+            <option value="Оформление соц.сетей">Оформление соц.сетей</option>
+            <option value="Оформление меню">Оформление меню</option>
+            <option value="Другое">Другое</option>
+          </select>
+        </div>
+        <div class="contact-form__row">
+          <label class="contact-form__label" for="order-description">Кратко опишите заказ</label>
+          <textarea
+            class="contact-form__input contact-form__textarea"
+            id="order-description"
+            name="description"
+            rows="5"
+            maxlength="1000"
+            placeholder="Расскажите о задаче, желаемом стиле и сроках"
+            required
+          ></textarea>
+        </div>
         <div class="contact-form__trap" aria-hidden="true">
           <label for="website">Не заполняйте это поле</label>
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
