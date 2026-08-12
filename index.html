@@ -38,11 +38,11 @@
         <a class="hero__portfolio-link" href="#portfolio">Посмотреть работы</a>
         <a class="hero__order-link" href="#contact">Заказать дизайн</a>
         <div class="theme-switch" role="group" aria-label="Цветовая тема">
-          <span class="theme-switch__sun" aria-hidden="true"></span>
           <button class="theme-switch__control" type="button" aria-label="Включить светлую тему" aria-pressed="false">
+            <span class="theme-switch__sun" aria-hidden="true"></span>
+            <span class="theme-switch__moon" aria-hidden="true"></span>
             <span class="theme-switch__thumb"></span>
           </button>
-          <span class="theme-switch__moon" aria-hidden="true"></span>
         </div>
       </div>
       <p class="hero__tagline">Графический дизайн и полиграфия</p>
@@ -77,7 +77,10 @@
           </p>
         </div>
         <figure class="about__visual">
-          <img src="assets/about-design-workspace.png" alt="Рабочее пространство графического дизайнера с монитором и графическим планшетом">
+          <picture>
+            <source class="about__image-light" srcset="assets/about-design-workspace-light.png">
+            <img src="assets/about-design-workspace.png" alt="Рабочее пространство графического дизайнера с монитором и графическим планшетом">
+          </picture>
         </figure>
       </div>
     </div>
@@ -277,6 +280,7 @@
       document.documentElement.dataset.theme = theme;
       themeControl.setAttribute('aria-pressed', String(isLight));
       themeControl.setAttribute('aria-label', isLight ? 'Включить тёмную тему' : 'Включить светлую тему');
+      document.querySelector('.about__image-light').media = isLight ? 'all' : 'not all';
     };
 
     applyTheme(initialTheme);
