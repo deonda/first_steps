@@ -452,7 +452,7 @@ h1, h2, h3, h4, h5, h6,
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--text);
-  background: var(--cream);
+  background: transparent;
   border-radius: 28px;
   border: 1px solid rgba(var(--turquoise-rgb), 0.25);
 }
@@ -607,7 +607,7 @@ h1, h2, h3, h4, h5, h6,
 [data-theme="light"] .contact-form__input,
 [data-theme="light"] .portfolio-project,
 [data-theme="light"] .gallery__dialog {
-  background: transparent;
+  background: var(--cream);
 }
 
 [data-theme="light"] .about__skills span,
