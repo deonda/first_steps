@@ -190,7 +190,7 @@
     <div class="section-inner">
       <h2 class="section-title">Связаться</h2>
       <p class="section-desc">Оставьте контакты — отвечу в течение одного рабочего дня</p>
-      <form class="contact-form" action="#" method="post">
+      <form class="contact-form" method="post">
         <div class="contact-form__row">
           <label class="contact-form__label" for="name">Имя</label>
           <input
@@ -223,7 +223,12 @@
             required
           >
         </div>
+        <div class="contact-form__trap" aria-hidden="true">
+          <label for="website">Не заполняйте это поле</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <button class="contact-form__submit" type="submit">Отправить</button>
+        <p class="contact-form__status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
@@ -309,6 +314,44 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
     revealItems.forEach((item) => observer.observe(item));
+
+    const contactForm = document.querySelector('.contact-form');
+    const submitButton = contactForm.querySelector('.contact-form__submit');
+    const formStatus = contactForm.querySelector('.contact-form__status');
+    const formEndpoint = 'https://script.google.com/macros/s/AKfycbyR8kMvKFxKxi8G0_PaeyTpPv3ewIv86ulzTAL9curGXv3bh-9aczETQKglIWYEjLxZ/exec';
+
+    contactForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(contactForm);
+
+      if (formData.get('website')) {
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Отправляем…';
+      formStatus.className = 'contact-form__status';
+      formStatus.textContent = '';
+
+      try {
+        await fetch(formEndpoint, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        });
+
+        contactForm.reset();
+        formStatus.classList.add('contact-form__status--success');
+        formStatus.textContent = 'Спасибо! Заявка отправлена. Я свяжусь с вами в ближайшее время.';
+      } catch (error) {
+        formStatus.classList.add('contact-form__status--error');
+        formStatus.textContent = 'Не удалось отправить заявку. Проверьте интернет и попробуйте ещё раз.';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Отправить';
+      }
+    });
   </script>
 
 </body>
