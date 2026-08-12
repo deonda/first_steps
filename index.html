@@ -133,13 +133,21 @@
           </div>
         </article>
 
-        <article class="portfolio-card">
+        <article class="portfolio-card portfolio-card--interactive" data-project-card tabindex="0" aria-expanded="false">
           <div class="portfolio-card__visual portfolio-card__visual--6">
             <div class="work-cover work-cover--menu"><i></i><i></i><i></i></div>
           </div>
           <div class="portfolio-card__caption">
             <h3 class="portfolio-card__title">Оформление меню</h3>
             <p class="portfolio-card__desc">Стильные и удобные меню для кафе, ресторанов и сезонных предложений.</p>
+          </div>
+          <span class="portfolio-card__hint">Смотреть проекты</span>
+          <div class="portfolio-card__projects" aria-label="Проекты в категории меню">
+            <span class="portfolio-card__projects-label">Проекты</span>
+            <button class="portfolio-project" type="button" data-gallery-open>
+              <span>Карта напитков</span>
+              <small>3 работы</small>
+            </button>
           </div>
         </article>
 
@@ -225,6 +233,28 @@
     <p>© 2026 Belyakov design</p>
   </footer>
 
+  <div class="gallery" role="dialog" aria-modal="true" aria-labelledby="gallery-title" hidden>
+    <div class="gallery__backdrop" data-gallery-close></div>
+    <div class="gallery__dialog">
+      <div class="gallery__header">
+        <div>
+          <span class="gallery__eyebrow">Оформление меню</span>
+          <h2 class="gallery__title" id="gallery-title">Карта напитков</h2>
+        </div>
+        <button class="gallery__close" type="button" data-gallery-close aria-label="Закрыть галерею">×</button>
+      </div>
+      <div class="gallery__viewport">
+        <button class="gallery__arrow gallery__arrow--prev" type="button" data-gallery-prev aria-label="Предыдущая работа">‹</button>
+        <img class="gallery__image" src="assets/portfolio/menu/drinks-menu/drinks-menu-front.webp" alt="Карта напитков, страница 1">
+        <button class="gallery__arrow gallery__arrow--next" type="button" data-gallery-next aria-label="Следующая работа">›</button>
+      </div>
+      <div class="gallery__footer">
+        <span class="gallery__counter">1 / 3</span>
+        <div class="gallery__dots" aria-label="Выбор работы"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const header = document.querySelector('.header');
     const navToggle = document.querySelector('.nav-toggle');
@@ -302,6 +332,80 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
     revealItems.forEach((item) => observer.observe(item));
+
+    const projectCard = document.querySelector('[data-project-card]');
+    const gallery = document.querySelector('.gallery');
+    const galleryImage = gallery.querySelector('.gallery__image');
+    const galleryCounter = gallery.querySelector('.gallery__counter');
+    const galleryDots = gallery.querySelector('.gallery__dots');
+    const galleryItems = [
+      { src: 'assets/portfolio/menu/drinks-menu/drinks-menu-front.webp', alt: 'Карта напитков, страница 1' },
+      { src: 'assets/portfolio/menu/drinks-menu/drinks-menu-back-1.webp', alt: 'Карта напитков, страница 2' },
+      { src: 'assets/portfolio/menu/drinks-menu/drinks-menu-back-2.webp', alt: 'Карта напитков, страница 3' }
+    ];
+    let galleryIndex = 0;
+    let galleryTrigger = null;
+
+    galleryItems.forEach((item, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Открыть работу ${index + 1}`);
+      dot.addEventListener('click', () => showGalleryItem(index));
+      galleryDots.append(dot);
+    });
+
+    const showGalleryItem = (index) => {
+      galleryIndex = (index + galleryItems.length) % galleryItems.length;
+      galleryImage.src = galleryItems[galleryIndex].src;
+      galleryImage.alt = galleryItems[galleryIndex].alt;
+      galleryCounter.textContent = `${galleryIndex + 1} / ${galleryItems.length}`;
+      [...galleryDots.children].forEach((dot, dotIndex) => {
+        dot.classList.toggle('is-active', dotIndex === galleryIndex);
+      });
+    };
+
+    const openGallery = (trigger) => {
+      galleryTrigger = trigger;
+      showGalleryItem(0);
+      gallery.hidden = false;
+      document.body.classList.add('gallery-open');
+      gallery.querySelector('.gallery__close').focus();
+    };
+
+    const closeGallery = () => {
+      gallery.hidden = true;
+      document.body.classList.remove('gallery-open');
+      galleryTrigger?.focus();
+    };
+
+    projectCard.addEventListener('click', (event) => {
+      if (event.target.closest('[data-gallery-open]')) return;
+      const isTouchLayout = window.matchMedia('(hover: none), (max-width: 640px)').matches;
+      if (isTouchLayout) {
+        const isOpen = projectCard.classList.toggle('is-projects-open');
+        projectCard.setAttribute('aria-expanded', String(isOpen));
+      }
+    });
+
+    projectCard.addEventListener('keydown', (event) => {
+      if ((event.key === 'Enter' || event.key === ' ') && !event.target.closest('button')) {
+        event.preventDefault();
+        const isOpen = projectCard.classList.toggle('is-projects-open');
+        projectCard.setAttribute('aria-expanded', String(isOpen));
+      }
+    });
+
+    document.querySelector('[data-gallery-open]').addEventListener('click', (event) => openGallery(event.currentTarget));
+    gallery.querySelectorAll('[data-gallery-close]').forEach((button) => button.addEventListener('click', closeGallery));
+    gallery.querySelector('[data-gallery-prev]').addEventListener('click', () => showGalleryItem(galleryIndex - 1));
+    gallery.querySelector('[data-gallery-next]').addEventListener('click', () => showGalleryItem(galleryIndex + 1));
+
+    document.addEventListener('keydown', (event) => {
+      if (gallery.hidden) return;
+      if (event.key === 'Escape') closeGallery();
+      if (event.key === 'ArrowLeft') showGalleryItem(galleryIndex - 1);
+      if (event.key === 'ArrowRight') showGalleryItem(galleryIndex + 1);
+    });
 
     const contactForm = document.querySelector('.contact-form');
     const submitButton = contactForm.querySelector('.contact-form__submit');
