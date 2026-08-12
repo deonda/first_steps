@@ -52,6 +52,15 @@ body {
   color: var(--text);
   background-color: var(--cream);
   overflow-x: hidden;
+  transition: color 0.55s ease, background-color 0.55s ease;
+}
+
+body *,
+body *::before,
+body *::after {
+  transition-property: color, background-color, border-color, box-shadow, opacity, filter, transform;
+  transition-duration: 0.55s;
+  transition-timing-function: ease;
 }
 
 section {
@@ -395,6 +404,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .about__visual {
+  position: relative;
   min-height: 100%;
   overflow: hidden;
   background: var(--cream);
@@ -402,19 +412,28 @@ h1, h2, h3, h4, h5, h6,
   border-radius: 28px;
 }
 
-.about__visual img {
+.about__image {
   display: block;
   width: 100%;
   height: 100%;
   min-height: 420px;
   object-fit: cover;
   object-position: center;
+  transition: opacity 0.7s ease;
 }
 
-.about__visual picture {
-  display: block;
-  width: 100%;
-  height: 100%;
+.about__image--light {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+[data-theme="light"] .about__image--dark {
+  opacity: 0;
+}
+
+[data-theme="light"] .about__image--light {
+  opacity: 1;
 }
 
 .about__skills span {
@@ -1809,7 +1828,7 @@ body.gallery-open {
     font-size: 1.08rem;
   }
 
-  .about__visual img {
+  .about__image {
     min-height: 280px;
   }
 

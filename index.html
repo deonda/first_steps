@@ -77,10 +77,8 @@
           </p>
         </div>
         <figure class="about__visual">
-          <picture>
-            <source class="about__image-light" srcset="assets/about-design-workspace-light.png">
-            <img src="assets/about-design-workspace.png" alt="Рабочее пространство графического дизайнера с монитором и графическим планшетом">
-          </picture>
+          <img class="about__image about__image--dark" src="assets/about-design-workspace.png" alt="Рабочее пространство графического дизайнера с монитором и графическим планшетом">
+          <img class="about__image about__image--light" src="assets/about-design-workspace-light.png" alt="Светлое рабочее пространство графического дизайнера с монитором и графическим планшетом">
         </figure>
       </div>
     </div>
@@ -280,7 +278,6 @@
       document.documentElement.dataset.theme = theme;
       themeControl.setAttribute('aria-pressed', String(isLight));
       themeControl.setAttribute('aria-label', isLight ? 'Включить тёмную тему' : 'Включить светлую тему');
-      document.querySelector('.about__image-light').media = isLight ? 'all' : 'not all';
     };
 
     applyTheme(initialTheme);
