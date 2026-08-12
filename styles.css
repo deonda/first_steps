@@ -807,6 +807,7 @@ h1, h2, h3, h4, h5, h6,
 /* Minimal portfolio previews */
 .work-cover {
   display: block;
+  isolation: isolate;
   background: linear-gradient(145deg, var(--blue) 0%, var(--cream) 100%);
   border-color: rgba(79, 147, 210, 0.32);
   transform: none;
@@ -817,6 +818,7 @@ h1, h2, h3, h4, h5, h6,
 .work-cover i {
   box-sizing: border-box;
   filter: none;
+  backface-visibility: hidden;
 }
 
 /* Posters: two vertical printed sheets */
@@ -831,16 +833,16 @@ h1, h2, h3, h4, h5, h6,
 
 .work-cover--posters::before {
   left: 12%;
-  background: linear-gradient(155deg, var(--red) 0 48%, var(--turquoise) 48% 62%, var(--light-gray) 62%);
-  transform: rotate(-7deg);
+  background: linear-gradient(155deg, var(--red) 0 47%, var(--turquoise) 49% 61%, var(--light-gray) 63%);
+  transform: none;
 }
 
 .work-cover--posters::after {
   right: 10%;
   bottom: auto;
   left: auto;
-  background: linear-gradient(25deg, var(--blue-light) 0 38%, var(--burgundy) 38% 72%, var(--turquoise-light) 72%);
-  transform: rotate(7deg);
+  background: linear-gradient(25deg, var(--blue-light) 0 37%, var(--burgundy) 39% 71%, var(--turquoise-light) 73%);
+  transform: none;
 }
 
 /* Business cards: two horizontal cards */
@@ -857,13 +859,13 @@ h1, h2, h3, h4, h5, h6,
   top: 23%;
   right: auto;
   background: linear-gradient(110deg, var(--red) 0 34%, var(--light-gray) 34%);
-  transform: rotate(-8deg);
+  transform: translateY(-8px);
 }
 
 .work-cover--cards::after {
   bottom: 23%;
   background: linear-gradient(110deg, var(--turquoise) 0 18%, var(--blue-bright) 18%);
-  transform: rotate(8deg);
+  transform: translateY(8px);
 }
 
 .work-cover--cards i:nth-child(1),
@@ -876,8 +878,8 @@ h1, h2, h3, h4, h5, h6,
   border-radius: 4px;
 }
 
-.work-cover--cards i:nth-child(1) { top: 39%; left: 55%; transform: rotate(-8deg); }
-.work-cover--cards i:nth-child(2) { top: 63%; left: 25%; transform: rotate(8deg); }
+.work-cover--cards i:nth-child(1) { top: 36%; left: 55%; transform: none; }
+.work-cover--cards i:nth-child(2) { top: 66%; left: 25%; transform: none; }
 
 /* Social media: smartphone with a post */
 .work-cover--social {
@@ -946,7 +948,7 @@ h1, h2, h3, h4, h5, h6,
   left: 18%;
   right: auto;
   background: var(--blue-light);
-  transform: rotate(-8deg);
+  transform: translate(-5px, -5px);
 }
 
 .work-cover--flyers::after {
@@ -954,7 +956,7 @@ h1, h2, h3, h4, h5, h6,
   bottom: auto;
   left: auto;
   background: linear-gradient(180deg, var(--light-gray) 0 28%, var(--red-warm) 28% 52%, var(--turquoise-light) 52%);
-  transform: rotate(5deg);
+  transform: translate(5px, 5px);
 }
 
 /* Articles: editorial page with image and text columns */
@@ -1015,7 +1017,7 @@ h1, h2, h3, h4, h5, h6,
   left: 12%;
   right: auto;
   background: linear-gradient(180deg, var(--turquoise) 0 18%, var(--light-gray) 18%);
-  transform: perspective(300px) rotateY(12deg);
+  transform: none;
 }
 
 .work-cover--menu::after {
@@ -1023,7 +1025,7 @@ h1, h2, h3, h4, h5, h6,
   bottom: auto;
   left: auto;
   background: linear-gradient(180deg, var(--red) 0 18%, var(--light-gray) 18%);
-  transform: perspective(300px) rotateY(-12deg);
+  transform: none;
 }
 
 .work-cover--menu i {
