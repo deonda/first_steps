@@ -804,6 +804,242 @@ h1, h2, h3, h4, h5, h6,
 .work-cover--menu::before { top: 22%; right: -30%; background: var(--red-warm); }
 .work-cover--menu::after { bottom: 56%; background: var(--turquoise); transform: rotate(-10deg); }
 
+/* Minimal portfolio previews */
+.work-cover {
+  display: block;
+  background: linear-gradient(145deg, var(--blue) 0%, var(--cream) 100%);
+  border-color: rgba(79, 147, 210, 0.32);
+  transform: none;
+}
+
+.work-cover::before,
+.work-cover::after,
+.work-cover i {
+  box-sizing: border-box;
+  filter: none;
+}
+
+/* Posters: two vertical printed sheets */
+.work-cover--posters::before,
+.work-cover--posters::after {
+  width: 46%;
+  height: 68%;
+  top: 16%;
+  border-radius: 8px;
+  box-shadow: 0 12px 22px rgba(8, 17, 31, 0.5);
+}
+
+.work-cover--posters::before {
+  left: 12%;
+  background: linear-gradient(155deg, var(--red) 0 48%, var(--turquoise) 48% 62%, var(--light-gray) 62%);
+  transform: rotate(-7deg);
+}
+
+.work-cover--posters::after {
+  right: 10%;
+  bottom: auto;
+  left: auto;
+  background: linear-gradient(25deg, var(--blue-light) 0 38%, var(--burgundy) 38% 72%, var(--turquoise-light) 72%);
+  transform: rotate(7deg);
+}
+
+/* Business cards: two horizontal cards */
+.work-cover--cards::before,
+.work-cover--cards::after {
+  width: 72%;
+  height: 34%;
+  left: 14%;
+  border-radius: 9px;
+  box-shadow: 0 12px 22px rgba(8, 17, 31, 0.5);
+}
+
+.work-cover--cards::before {
+  top: 23%;
+  right: auto;
+  background: linear-gradient(110deg, var(--red) 0 34%, var(--light-gray) 34%);
+  transform: rotate(-8deg);
+}
+
+.work-cover--cards::after {
+  bottom: 23%;
+  background: linear-gradient(110deg, var(--turquoise) 0 18%, var(--blue-bright) 18%);
+  transform: rotate(8deg);
+}
+
+.work-cover--cards i:nth-child(1),
+.work-cover--cards i:nth-child(2) {
+  z-index: 2;
+  width: 24%;
+  height: 3px;
+  border: 0;
+  background: var(--cream);
+  border-radius: 4px;
+}
+
+.work-cover--cards i:nth-child(1) { top: 39%; left: 55%; transform: rotate(-8deg); }
+.work-cover--cards i:nth-child(2) { top: 63%; left: 25%; transform: rotate(8deg); }
+
+/* Social media: smartphone with a post */
+.work-cover--social {
+  aspect-ratio: 4 / 5;
+}
+
+.work-cover--social::before {
+  width: 54%;
+  height: 78%;
+  top: 11%;
+  right: 23%;
+  background: var(--cream);
+  border: 3px solid var(--light-gray);
+  border-radius: 18px;
+  box-shadow: 0 14px 26px rgba(8, 17, 31, 0.55);
+}
+
+.work-cover--social::after {
+  z-index: 1;
+  width: 42%;
+  height: 42%;
+  left: 29%;
+  bottom: 29%;
+  background: linear-gradient(145deg, var(--red) 0 48%, var(--turquoise) 48%);
+  border-radius: 7px;
+  transform: none;
+}
+
+.work-cover--social i:nth-child(1) {
+  z-index: 2;
+  width: 7px;
+  height: 7px;
+  top: 20%;
+  left: 33%;
+  background: var(--turquoise-light);
+  border: 0;
+  border-radius: 50%;
+  transform: none;
+}
+
+.work-cover--social i:nth-child(2),
+.work-cover--social i:nth-child(3) {
+  z-index: 2;
+  height: 3px;
+  left: 31%;
+  bottom: auto;
+  background: var(--text-muted);
+  border-radius: 3px;
+  transform: none;
+}
+
+.work-cover--social i:nth-child(2) { width: 38%; top: 69%; }
+.work-cover--social i:nth-child(3) { width: 26%; top: 75%; right: auto; }
+
+/* Flyers: stacked single-page handouts */
+.work-cover--flyers::before,
+.work-cover--flyers::after {
+  width: 54%;
+  height: 72%;
+  top: 14%;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(8, 17, 31, 0.5);
+}
+
+.work-cover--flyers::before {
+  left: 18%;
+  right: auto;
+  background: var(--blue-light);
+  transform: rotate(-8deg);
+}
+
+.work-cover--flyers::after {
+  right: 16%;
+  bottom: auto;
+  left: auto;
+  background: linear-gradient(180deg, var(--light-gray) 0 28%, var(--red-warm) 28% 52%, var(--turquoise-light) 52%);
+  transform: rotate(5deg);
+}
+
+/* Articles: editorial page with image and text columns */
+.work-cover--articles {
+  aspect-ratio: 4 / 5;
+}
+
+.work-cover--articles::before {
+  width: 70%;
+  height: 78%;
+  top: 11%;
+  right: 15%;
+  background: var(--light-gray);
+  border-radius: 9px;
+  box-shadow: 0 14px 26px rgba(8, 17, 31, 0.52);
+}
+
+.work-cover--articles::after {
+  z-index: 1;
+  width: 58%;
+  height: 28%;
+  left: 21%;
+  bottom: 49%;
+  background: linear-gradient(135deg, var(--blue-light), var(--red));
+  border-radius: 6px;
+  transform: none;
+}
+
+.work-cover--articles i {
+  z-index: 2;
+  height: 4px;
+  left: 25%;
+  background: var(--blue);
+  border: 0;
+  border-radius: 4px;
+  transform: none;
+}
+
+.work-cover--articles i:nth-child(1) { width: 48%; top: 58%; }
+.work-cover--articles i:nth-child(2) { width: 42%; top: 65%; bottom: auto; }
+.work-cover--articles i:nth-child(3) { width: 32%; top: 72%; right: auto; bottom: auto; }
+
+/* Menu: open two-page restaurant menu */
+.work-cover--menu {
+  aspect-ratio: 4 / 5;
+}
+
+.work-cover--menu::before,
+.work-cover--menu::after {
+  width: 38%;
+  height: 72%;
+  top: 14%;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(8, 17, 31, 0.5);
+}
+
+.work-cover--menu::before {
+  left: 12%;
+  right: auto;
+  background: linear-gradient(180deg, var(--turquoise) 0 18%, var(--light-gray) 18%);
+  transform: perspective(300px) rotateY(12deg);
+}
+
+.work-cover--menu::after {
+  right: 12%;
+  bottom: auto;
+  left: auto;
+  background: linear-gradient(180deg, var(--red) 0 18%, var(--light-gray) 18%);
+  transform: perspective(300px) rotateY(-12deg);
+}
+
+.work-cover--menu i {
+  z-index: 2;
+  width: 22%;
+  height: 3px;
+  background: var(--blue);
+  border: 0;
+  border-radius: 3px;
+  transform: none;
+}
+
+.work-cover--menu i:nth-child(1) { top: 46%; left: 20%; }
+.work-cover--menu i:nth-child(2) { top: 56%; left: 58%; bottom: auto; }
+.work-cover--menu i:nth-child(3) { top: 66%; right: 20%; bottom: auto; }
+
 .contact-form__submit:disabled {
   cursor: wait;
   opacity: 0.65;
