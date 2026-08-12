@@ -13,7 +13,12 @@
 
   <header class="header">
     <a href="#hero" class="logo">Belyakov design</a>
-    <nav class="nav">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Открыть меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav" id="main-nav" aria-label="Основная навигация">
       <a href="#about">Обо мне</a>
       <a href="#portfolio">Работы</a>
       <a href="#contact">Контакты</a>
@@ -29,6 +34,7 @@
       <div class="hero__badge">
         <span class="hero__badge-text">Belyakov design</span>
       </div>
+      <a class="hero__portfolio-link" href="#portfolio">Посмотреть работы</a>
       <p class="hero__tagline">Графический дизайн и полиграфия</p>
     </div>
     <a href="#about" class="hero__scroll" aria-label="Прокрутить вниз">
@@ -94,7 +100,7 @@
   <!-- 3. Портфолио — полиграфия -->
   <section id="portfolio" class="portfolio">
     <div class="section-inner">
-      <h2 class="section-title">Полиграфия</h2>
+      <h2 class="section-title">Работы</h2>
       <p class="section-desc">Примеры работ: упаковка, каталоги, фирменная продукция</p>
       <div class="portfolio__grid">
 
@@ -224,6 +230,43 @@
   <footer class="footer">
     <p>© 2026 Belyakov design</p>
   </footer>
+
+  <script>
+    const header = document.querySelector('.header');
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = header.classList.toggle('header--menu-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+    });
+
+    nav.addEventListener('click', (event) => {
+      if (event.target.matches('a')) {
+        header.classList.remove('header--menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Открыть меню');
+      }
+    });
+
+    const revealItems = document.querySelectorAll(
+      '.section-title, .section-desc, .about__intro, .about__experience, .portfolio-card, .contact-form'
+    );
+
+    revealItems.forEach((item) => item.classList.add('reveal'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal--visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    revealItems.forEach((item) => observer.observe(item));
+  </script>
 
 </body>
 </html>
