@@ -607,10 +607,14 @@ h1, h2, h3, h4, h5, h6,
 [data-theme="light"] .contact-form__input,
 [data-theme="light"] .portfolio-project,
 [data-theme="light"] .gallery__dialog {
-  background: var(--cream);
+  background: transparent;
 }
 
 [data-theme="light"] .about__skills span,
+[data-theme="light"] .gallery__viewport {
+  background: transparent;
+}
+
 [data-theme="light"] .gallery__viewport {
   background: var(--light-gray);
 }
