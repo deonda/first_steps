@@ -250,6 +250,48 @@
       }
     });
 
+    const portfolioLink = document.querySelector('.hero__portfolio-link');
+
+    portfolioLink.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      const target = document.querySelector(portfolioLink.getAttribute('href'));
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reduceMotion) {
+        target.scrollIntoView();
+        return;
+      }
+
+      const start = window.scrollY;
+      const headerOffset = header.offsetHeight;
+      const destination = target.getBoundingClientRect().top + start - headerOffset;
+      const distance = destination - start;
+      const duration = Math.min(1050, Math.max(650, Math.abs(distance) * 0.42));
+      const startedAt = performance.now();
+      const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+
+      document.documentElement.style.scrollBehavior = 'auto';
+
+      const animateScroll = (now) => {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const fastEaseOut = 1 - Math.pow(2, -10 * progress);
+        const inertia = 0.07 * Math.sin(Math.PI * progress) * (1 - progress);
+        const position = start + distance * (fastEaseOut + inertia);
+
+        window.scrollTo(0, position);
+
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        } else {
+          window.scrollTo(0, destination);
+          document.documentElement.style.scrollBehavior = previousScrollBehavior;
+        }
+      };
+
+      requestAnimationFrame(animateScroll);
+    });
+
     const revealItems = document.querySelectorAll(
       '.section-title, .section-desc, .about__intro, .about__experience, .portfolio-card, .contact-form'
     );

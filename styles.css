@@ -185,7 +185,7 @@ h1, h2, h3, h4, h5, h6,
   display: inline-block;
   padding: 28px 48px;
   background: linear-gradient(135deg, var(--burgundy) 0%, var(--red) 52%, var(--orange-red) 100%);
-  border-radius: 4px;
+  border-radius: 28px;
   box-shadow:
     0 20px 60px rgba(var(--turquoise-rgb), 0.28),
     0 4px 16px rgba(var(--turquoise-rgb), 0.18);
@@ -348,7 +348,7 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 500;
   color: var(--text);
   background: var(--cream);
-  border-radius: 100px;
+  border-radius: 28px;
   border: 1px solid rgba(var(--turquoise-rgb), 0.25);
 }
 
@@ -369,7 +369,7 @@ h1, h2, h3, h4, h5, h6,
   grid-template-rows: 4fr 1fr;
   aspect-ratio: 4 / 5;
   background: var(--blue);
-  border-radius: 10px;
+  border-radius: 28px;
   overflow: hidden;
   border: 1px solid rgba(79, 147, 210, 0.28);
   box-shadow: 0 8px 32px rgba(8, 17, 31, 0.45);
@@ -394,7 +394,7 @@ h1, h2, h3, h4, h5, h6,
   color: var(--cream);
   text-decoration: none;
   background: var(--turquoise);
-  border-radius: 6px;
+  border-radius: 28px;
   box-shadow: 0 10px 24px rgba(var(--turquoise-rgb), 0.22);
   transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -649,7 +649,7 @@ h1, h2, h3, h4, h5, h6,
   color: var(--text);
   background: var(--blue);
   border: 2px solid transparent;
-  border-radius: 6px;
+  border-radius: 28px;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -673,7 +673,7 @@ h1, h2, h3, h4, h5, h6,
   color: var(--cream);
   background: var(--turquoise);
   border: none;
-  border-radius: 6px;
+  border-radius: 28px;
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
 }
