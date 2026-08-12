@@ -825,7 +825,40 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .hero__scroll {
-    bottom: 24px;
+    bottom: 22px;
+    left: 50%;
+    width: 32px;
+    height: 54px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    opacity: 0.9;
+    text-decoration: none;
+  }
+
+  .hero__scroll::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: block;
+    border: 2px solid var(--turquoise);
+    border-radius: 7px;
+    box-shadow: inset 0 0 0 1px rgba(var(--turquoise-rgb), 0.12);
+  }
+
+  .hero__scroll span {
+    top: auto;
+    bottom: 8px;
+    left: 50%;
+    right: auto;
+    width: 5px;
+    height: 5px;
+    margin: 0 0 0 -2.5px;
+    background: var(--turquoise-light);
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(var(--turquoise-rgb), 0.85);
+    animation: phone-scroll 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   }
 
   .section-inner {
@@ -881,6 +914,26 @@ h1, h2, h3, h4, h5, h6,
 
   .footer {
     padding: 28px 20px;
+  }
+}
+
+@keyframes phone-scroll {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-34px);
+    opacity: 0;
   }
 }
 
